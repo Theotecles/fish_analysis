@@ -213,3 +213,16 @@ def homoscedasticity_assumption(model, features, label):
     plt.show()
 
 homoscedasticity_assumption(fish_model, X_train, y_train)
+
+# GET THE RMSE OF THE TRAINING AND TEST DATA
+train_residuals = calculate_residuals(fish_model, X_train, y_train)
+train_residuals_squared = (train_residuals['Residuals']) ** 2
+train_mse = np.mean(train_residuals_squared)
+train_rmse = np.sqrt(train_mse)
+print(train_rmse)
+
+test_residuals = calculate_residuals(fish_model, X_test, y_test)
+test_residuals_squared = (test_residuals['Residuals']) ** 2
+test_mse = np.mean(test_residuals_squared)
+test_rmse = np.sqrt(test_mse)
+print(test_rmse)
